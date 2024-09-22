@@ -63,13 +63,11 @@ $('.back_btn').click(function() {
 	if ($submenu.hasClass('active')) {
 			// Если submenu активно, то просто выключаем его
 			$submenu.removeClass('active');
-			$('.toggle_btn').removeClass('active')
-			console.log('123');
+		
 	} else {
 			// Если submenu не активно, то закрываем mega_menu
 			$currentMenu.removeClass('active');
 			$('.toggle_btn').removeClass('active')
-			console.log('Mega Menu закрыто');
 	}
 });
 $('.tabs_widget a').click(function(){
@@ -174,6 +172,10 @@ var swiper5 = new Swiper(".docs_slider", {
 		nextEl: ".next_btn.slider_nav_docs",
 		prevEl: ".prev_btn.slider_nav_docs",
 	},
+	pagination: {
+		el: ".swiper-pagination.swiper-pagination-alt",
+		clickable: true,
+	},
 	breakpoints: {
 		993: {
 			slidesPerView: 4,
@@ -184,6 +186,7 @@ var swiper5 = new Swiper(".docs_slider", {
 		spaceBetween: 20,
  },
 	}
+	
 });
 var swiper6 = new Swiper(".product_slider", {
 	slidesPerView: 1,
@@ -225,6 +228,68 @@ var swiper7 = new Swiper(".related_slider", {
 
 	}
 });
+//faq
+$('.faq_widget_item').each(function() {
+  $(this).find('div:last').hide();
+});
+$('.faq_widget').each(function(){
+	$(this).find('.faq_widget_item:first').addClass('active')
+})
+$(document).ready(function() {
+  $(".faq_widget_item").each(function(index) {
+    var $this = $(this);
+    var $activeBlock = $this.find("div:last");
+
+    if (index === 0) { 
+      $this.find("div:last").show();
+    } else {
+      $activeBlock.hide();
+    }
+  });
+});
+
+$(".faq_widget_item").click(function() {
+  var $this = $(this);
+  var $activeBlock = $this.find("div:last");
+  $this.siblings(".faq_widget_item").find("div:last").slideUp(function() {
+    $(this).prev().removeClass("active");
+  });
+  $activeBlock.slideDown();	$('.faq_widget_item').removeClass('active')
+  $this.addClass('active');
+});
+
+	// sidebar_page current id
+	$('.sidebar_page').each(function() {
+    var $navbarLinks = $(this).find('a'); // Получаем только ссылки в текущем .sidebar_page
+
+    $(window).scroll(function() {
+        var scrollPosition = $(this).scrollTop();
+
+        $navbarLinks.each(function() {
+            var targetId = $(this).attr('href');
+
+            if (targetId) { // Проверяем, что targetId существует
+                var targetOffset = $(targetId).offset().top;
+
+                // Проверяем, если мы внутри блока
+                if (scrollPosition >= targetOffset - 50 && scrollPosition < targetOffset + $(targetId).outerHeight()) {
+                    $navbarLinks.removeClass('active'); // Убираем класс active у всех
+                    $(this).addClass('active'); // Добавляем класс active только текущему элементу
+                }
+            }
+        });
+    });
+});
+// 	$('a[href^="#"]').on('click', function(event) {
+// 		event.preventDefault(); // Отменяем стандартное поведение ссылки
+// 		var target = $(this).attr('href'); // Получаем место назначения
+// 		var offset = 50; // Смещение в пикселях
+
+// 		$('html, body').animate({
+// 				scrollTop: $(target).offset().top - offset
+// 		}, 10); // 600 - продолжительность анимации
+// });
+
 Fancybox.bind('[data-fancybox="gallery"]', {
 	// Your custom options
 });
