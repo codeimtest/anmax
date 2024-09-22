@@ -66,7 +66,7 @@
 									<a href="tel:+73412570578" class="m_text d-block">8 (3412) 570–578</a>
 									<a href="mailto:info@anmax18.ru" class="s_size d-block">info@anmax18.ru</a>
 								</div>
-								<a href="#" class="btn border_btn d-none d-lg-inline-block">Помощь в подборе</a>
+								<a href="#" class="btn border_btn d-none d-lg-inline-block contact">Помощь в подборе</a>
 								<a href="tel:" class="d-block d-lg-none phone-header">
 									<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 										<g clip-path="url(#clip0_178_3539)">
@@ -200,7 +200,7 @@
 									<li><a href="#">Новости</a></li>
 								</ul>
 							</nav>
-							<a href="#" class="btn border_btn mt-4">Помощь в подборе</a>
+							<a href="#" class="btn border_btn mt-4 contact">Помощь в подборе</a>
 						</div>
 					</div>
 				</div>
@@ -882,7 +882,55 @@
 			</div>
 		</footer>
 	</div>
-
+	<div class="popup for-contact">
+		<div class="popup-dialog">
+			<div class="popup-wrap">
+				<div class="preloader" style="display: none;">
+					<div class="preloader-container">
+						<span class="animated-preloader"></span>
+					</div>
+				</div>
+				<div class="btn-close">
+					<img src="images/cancel.svg">
+				</div>
+				<div>
+					<div class="xxl_size s_text mb-5">Узнать стоимость</div>
+				</div>
+				<form class="form popup-form">
+					<input type="hidden" name="recaptcha_response" class="recaptchaResponse">
+					<div class="form-group">
+						<input type="text" id="name-popup" name="name" required="" placeholder="Ваше имя">
+						<label for="name-popup">Ваше имя</label>
+					</div>
+					<div class="form-group">
+						<input type="text" name="phone" placeholder="Телефон" id="phone-popup" class="phone" required="Номер телефона">
+						<label for="phone-popup">Номер телефона</label>
+					</div>
+					<div class="form-group">
+						<textarea name="cmnt" id="text-cmnt-f" cols="30" rows="3" placeholder="опишите вашу задачу" required=""></textarea>
+						<label for="text-cmnt-f">Ваш вопрос</label>
+					</div>
+					<div class="form-group">
+						<button class="btn blue_btn" disabled="">Комментарий</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div class="success">
+		<span class="xxl_size">Заявка успешно отправлена!<br>Мы свяжемся с вами как можно быстрее.
+			<div class="form-icon">
+				<div class="sa">
+					<div class="sa-success">
+						<div class="sa-success-tip"></div>
+						<div class="sa-success-long"></div>
+						<div class="sa-success-placeholder"></div>
+						<div class="sa-success-fix"></div>
+					</div>
+				</div>
+			</div>
+		</span>
+	</div>
 </body>
 
 </html>
