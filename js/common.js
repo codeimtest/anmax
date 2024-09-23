@@ -280,16 +280,31 @@ $(".faq_widget_item").click(function() {
         });
     });
 });
-// 	$('a[href^="#"]').on('click', function(event) {
-// 		event.preventDefault(); // Отменяем стандартное поведение ссылки
-// 		var target = $(this).attr('href'); // Получаем место назначения
-// 		var offset = 50; // Смещение в пикселях
+$('.close').click(function() {
+	$('.popup').removeClass('active')
+});
+$('.btn-close').click(function () {
+	if ($(this).parent().parent().parent().hasClass("active")) {
+		$(this).parent().parent().parent().removeClass("active");
+		$('body').removeClass('lock');
+	} else {
+		$('body').removeClass('lock');
+	}
+});
+$(document).mouseup(function (e) {
+	var container = $(".popup-dialog");
+	if (container.has(e.target).length === 0) {
+		$('.popup').removeClass('active');
+		$('body').removeClass('lock');
+	}
+});
 
-// 		$('html, body').animate({
-// 				scrollTop: $(target).offset().top - offset
-// 		}, 10); // 600 - продолжительность анимации
-// });
-
+$('.contact').click(function (e) {
+	$('.for-contact').addClass('active');
+	$('body').toggleClass('lock');
+	e.preventDefault();
+})
+$(".phone").mask("+7(999) 999-9999");
 Fancybox.bind('[data-fancybox="gallery"]', {
 	// Your custom options
 });
